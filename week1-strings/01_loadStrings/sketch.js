@@ -1,24 +1,28 @@
-// A2Z F16
-// Daniel Shiffman
-// https://github.com/shiffman/A2Z-F16
-// http://shiffman.net/a2z
+var textfield;
+var output;
+var submit;
 
-// Variable for array of lines
-var lines;
-// Variable where we'll join all the text together
-var txt;
-
-// Anything in preload will finish before setup() is triggered
-function preload() {
-  lines = loadStrings('files/spam.txt');
-}
-
-// Now we can do stuff with the text
 function setup() {
   noCanvas();
-  // join() joins the elements of an array
-  // Here we pass in a line break to retain formatting
-  txt = join(lines, '<br/>');
-  var par = createP(txt);
-  par.id('text');
+  //textfield = createInput("enter");
+
+  textfield = select('#textfield');
+
+  //textfield.changed(newText);
+  textfield.input(newTyping);
+  output = select('#output');
+  submit = select('#submit');
+  submit.mousePressed(newText);
+}
+
+function newText(){
+
+    createP(textfield.value());
+//  console.log(textfield.value());
+
+}
+
+function newTyping(){
+  output.html(textfield.value());
+//  createP(textfield.value());
 }
