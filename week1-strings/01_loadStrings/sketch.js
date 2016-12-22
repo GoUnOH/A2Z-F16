@@ -1,28 +1,17 @@
-var textfield;
-var output;
-var submit;
-
-function setup() {
-  noCanvas();
-  //textfield = createInput("enter");
-
-  textfield = select('#textfield');
-
-  //textfield.changed(newText);
-  textfield.input(newTyping);
-  output = select('#output');
-  submit = select('#submit');
-  submit.mousePressed(newText);
-}
-
-function newText(){
-
-    createP(textfield.value());
-//  console.log(textfield.value());
+function setup(){
+  createCanvas(100, 100, WEBGL);
 
 }
+function draw(){
+ //move the camera away from the plane by a sin wave
+ camera(0, 0, sin(frameCount * 0.01) * 100);
+ // plane(120, 120);
 
-function newTyping(){
-  output.html(textfield.value());
-//  createP(textfield.value());
+ ellipseMode(RADIUS);  // Set ellipseMode to RADIUS
+fill(255);  // Set fill to white
+ellipse(50, 50, 30, 30);  // Draw white ellipse using RADIUS mode
+
+ellipseMode(CENTER);  // Set ellipseMode to CENTER
+fill(100);  // Set fill to gray
+ellipse(50, 50, 30, 30);  // Draw gray ellipse using CENTER mode
 }
